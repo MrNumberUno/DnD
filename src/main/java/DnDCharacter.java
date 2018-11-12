@@ -2,8 +2,6 @@ package src.main.java;
 
 import java.util.ArrayList;
 
-import src.main.java.Races.DnDRace;
-
 /**
  * Represents a player's character for us in DnD 5th ed.
  * @author thom
@@ -31,13 +29,33 @@ public class DnDCharacter {
     private int firstSlots;
     
     //size
-    private String size;
+    private static String size;
     
     //primary ability scores
-    private int strength, dexterity, constitution, intelligence, wisdom, charisma;
+    private static int strength;
+
+	private static int dexterity;
+
+	private static int constitution;
+
+	private static int intelligence;
+
+	private static int wisdom;
+
+	private static int charisma;
    
     //primary ability modifiers
-    private int strMod, dexMod, conMod, intMod, wisMod, chaMod;
+    private static int strMod;
+
+	private static int dexMod;
+
+	private static int conMod;
+
+	private static int intMod;
+
+	private static int wisMod;
+
+	private static int chaMod;
     
     //armor received at 1st level
     private String armor;
@@ -67,10 +85,10 @@ public class DnDCharacter {
     private int initiative;
     
     //speed (in feet per turn)
-    private int speed;
+    private static int speed;
     
     //HP
-    private int maximumHP;
+    private static int maximumHP;
     
     //weapon attacks
     private final ArrayList<WeaponAttack> weaponAttacks;
@@ -280,59 +298,59 @@ public class DnDCharacter {
     {
         return this.statRolls[index];
     }
-    public void setStrength(int value)
+    public static void setStrength(int value)
     {
-        this.strength = value;
-        this.setStrMod(StatRoller.getStatMod(value));
+        strength = value;
+        setStrMod(StatRoller.getStatMod(value));
     }
-    public void setDexterity(int value)
+    public static void setDexterity(int value)
     {
-        this.dexterity = value;
-        this.setDexMod(StatRoller.getStatMod(value));
+        dexterity = value;
+        setDexMod(StatRoller.getStatMod(value));
     }
-    public void setConstitution(int value)
+    public static void setConstitution(int value)
     {
-        this.constitution = value;
-        this.setConMod(StatRoller.getStatMod(value));
+        constitution = value;
+        setConMod(StatRoller.getStatMod(value));
     }
-    public void setIntelligence(int value)
+    public static void setIntelligence(int value)
     {
-        this.intelligence = value;
-        this.setIntMod(StatRoller.getStatMod(value));
+        intelligence = value;
+        setIntMod(StatRoller.getStatMod(value));
     }
-    public void setWisdom(int value)
+    public static void setWisdom(int value)
     {
-        this.wisdom = value;
-        this.setWisMod(StatRoller.getStatMod(value));
+        wisdom = value;
+        setWisMod(StatRoller.getStatMod(value));
     }
-    public void setCharisma(int value)
+    public static void setCharisma(int value)
     {
-        this.charisma = value;
-        this.setChaMod(StatRoller.getStatMod(value));
+        charisma = value;
+        setChaMod(StatRoller.getStatMod(value));
     }
-    public int getStrength()
+    public static int getStrength()
     {
-        return this.strength;
+        return strength;
     }
-    public int getDexterity()
+    public static int getDexterity()
     {
-        return this.dexterity;
+        return dexterity;
     }
-    public int getConstitution()
+    public static int getConstitution()
     {
-        return this.constitution;
+        return constitution;
     }
-    public int getIntelligence()
+    public static int getIntelligence()
     {
-        return this.intelligence;
+        return intelligence;
     }
-    public int getWisdom()
+    public static int getWisdom()
     {
-        return this.wisdom;
+        return wisdom;
     }
-    public int getCharisma()
+    public static int getCharisma()
     {
-        return this.charisma;
+        return charisma;
     }
     public void setBackground(String bg)
     {
@@ -374,29 +392,29 @@ public class DnDCharacter {
     {
         this.skills[index] = amount;
     }
-    public void setStrMod(int value)
+    public static void setStrMod(int value)
     {
-        this.strMod = value;
+        strMod = value;
     }
-    public void setDexMod(int value)
+    public static void setDexMod(int value)
     {
-        this.dexMod = value;
+        dexMod = value;
     }
-    public void setConMod(int value)
+    public static void setConMod(int value)
     {
-        this.conMod = value;
+        conMod = value;
     }
-    public void setIntMod(int value)
+    public static void setIntMod(int value)
     {
-        this.intMod = value;
+        intMod = value;
     }
-    public void setWisMod(int value)
+    public static void setWisMod(int value)
     {
-        this.wisMod = value;
+        wisMod = value;
     }
-    public void setChaMod(int value)
+    public static void setChaMod(int value)
     {
-        this.chaMod = value;
+        chaMod = value;
     }
     public int getStrMod()
     {
@@ -593,9 +611,13 @@ public class DnDCharacter {
     {
         return passiveWis;
     }
-    public int getMaxHP()
+    public static int getMaxHP()
     {
         return maximumHP;
+    }
+    public static void setMaxHP(int h)
+    {
+    	maximumHP = h;
     }
     public int getArmorClass()
     {
@@ -605,9 +627,17 @@ public class DnDCharacter {
     {
         return speed;
     }
+    public static void setSpeed(int s)
+    {
+    	speed = s;
+    }
     public String getSize()
     {
         return size;
+    }
+    public static void setSize(String s)
+    {
+    	size = s;
     }
     public int getInit()
     {
@@ -1256,17 +1286,44 @@ public class DnDCharacter {
     }
     
     public void race2Changes(){
-    	size = race2.getSize();
-    	speed = race2.getSpeed();
+    	race2.setSize();
+    	race2.setSpeed();
     	raceFeatures.addAll(race2.RaceFeatures());
-    	maximumHP += race2.getMaximumHPBonus();
-    	strength += race2.getStrengthBonus();
-    	dexterity += race2.getDexterityBonus();
-    	constitution += race2.getConstitutionBonus();
-    	intelligence += race2.getIntelligenceBonus();
-    	wisdom += race2.getWisdomBonus();
-    	charisma += race2.getCharismaBonus();
+    	race2.setMaximumHP();
+    	race2.addStrengthBonus();
+    	race2.addDexterityBonus();
+    	race2.addConstitutionBonus();
+    	race2.addIntelligenceBonus();
+    	race2.addWisdomBonus();
+    	race2.addCharismaBonus();
     }
+    
+    public interface DnDRace {
+    	public ArrayList<String> RaceFeatures();
+    	
+    	public String getRace();
+    	
+    	public void setSpeed();
+
+    	public void setMaximumHP();
+    	
+    	public void addStrengthBonus();
+    	
+    	public void addDexterityBonus();
+    	
+    	public void addConstitutionBonus();
+    	
+    	public void addIntelligenceBonus();
+    	
+    	public void addWisdomBonus();
+    	
+    	public void addCharismaBonus();
+    	
+    	public void setSize();
+
+    	
+    }
+ 
 }
      
 

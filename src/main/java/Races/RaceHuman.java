@@ -2,7 +2,9 @@ package src.main.java.Races;
 
 import java.util.ArrayList;
 
-public class RaceHuman implements DnDRace {
+import src.main.java.DnDCharacter;
+
+public class RaceHuman implements DnDCharacter.DnDRace {
 
 	@Override
 	public ArrayList<String> RaceFeatures() {
@@ -17,48 +19,47 @@ public class RaceHuman implements DnDRace {
 	}
 
 	@Override
-	public int getSpeed() {
-		return 30;
+	public void setSpeed() {
+		DnDCharacter.setSpeed(30);
 	}
 
 	@Override
-	public String getSize() {
-		return "Meduim";
+	public void setMaximumHP() {
 	}
 
 	@Override
-	public int getMaximumHPBonus() {
-		return 0;
+	public void addStrengthBonus() {
+		DnDCharacter.setStrength(DnDCharacter.getStrength() + 1);
 	}
 
 	@Override
-	public int getStrengthBonus() {
-		return 1;
+	public void addDexterityBonus() {
+		DnDCharacter.setDexterity(DnDCharacter.getDexterity() + 1);
 	}
 
 	@Override
-	public int getDexterityBonus() {
-		return 1;
+	public void addConstitutionBonus() {
+		DnDCharacter.setConstitution(DnDCharacter.getConstitution() + 1);
 	}
 
 	@Override
-	public int getConstitutionBonus() {
-		return 1;
+	public void addIntelligenceBonus() {
+		DnDCharacter.setIntelligence(DnDCharacter.getIntelligence() + 1);
 	}
 
 	@Override
-	public int getIntelligenceBonus() {
-		return 1;
+	public void addWisdomBonus() {
+		DnDCharacter.setWisdom(DnDCharacter.getWisdom() + 1);
 	}
 
 	@Override
-	public int getWisdomBonus() {
-		return 1;
+	public void addCharismaBonus() {
+		DnDCharacter.setCharisma(DnDCharacter.getCharisma() + 1);
 	}
 
 	@Override
-	public int getCharismaBonus() {
-		return 1;
+	public void setSize() {
+		DnDCharacter.setSize("Medium");
 	}
 
 }

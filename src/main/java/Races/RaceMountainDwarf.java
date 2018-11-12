@@ -2,7 +2,9 @@ package src.main.java.Races;
 
 import java.util.ArrayList;
 
-public class RaceMountainDwarf implements DnDRace {
+import src.main.java.DnDCharacter;
+
+public class RaceMountainDwarf implements DnDCharacter.DnDRace {
 	
 	@Override
 	public ArrayList<String> RaceFeatures() {
@@ -21,48 +23,43 @@ public class RaceMountainDwarf implements DnDRace {
 	}
 	
 	@Override
-	public int getSpeed() {
-		return 25;
-	}
-	
-	@Override
-	public String getSize() {
-		return "Medium";
-	}
-	
-	@Override
-	public int getMaximumHPBonus() {
-		return 0;
+	public void setSpeed() {
+		DnDCharacter.setSpeed(30);
 	}
 
 	@Override
-	public int getStrengthBonus() {
-		return 2;
+	public void setMaximumHP() {
 	}
 
 	@Override
-	public int getDexterityBonus() {
-		return 0;
+	public void addStrengthBonus() {
+		DnDCharacter.setStrength(DnDCharacter.getStrength() + 2);
 	}
 
 	@Override
-	public int getConstitutionBonus() {
-		return 2;
+	public void addDexterityBonus() {
 	}
 
 	@Override
-	public int getIntelligenceBonus() {
-		return 0;
+	public void addConstitutionBonus() {
+		DnDCharacter.setConstitution(DnDCharacter.getConstitution() + 2);
 	}
 
 	@Override
-	public int getWisdomBonus() {
-		return 0;
+	public void addIntelligenceBonus() {
 	}
 
 	@Override
-	public int getCharismaBonus() {
-		return 0;
+	public void addWisdomBonus() {
+	}
+
+	@Override
+	public void addCharismaBonus() {
+	}
+
+	@Override
+	public void setSize() {
+		DnDCharacter.setSize("Medium");
 	}
 	
 }

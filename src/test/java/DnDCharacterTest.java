@@ -140,4 +140,14 @@ public class DnDCharacterTest {
 		
 		assert(sut.getRaceFeatures().equals(expected));
 	}
+	
+	@Test
+	public void givenRace2_whenRace2Changes_thenSize() {
+		DnDCharacter sut = new DnDCharacter();
+		
+		sut.setRace2(new RaceRockGnome());
+		sut.race2Changes();
+		
+		assert(sut.getSize().equals("Small"));
+	}
 }

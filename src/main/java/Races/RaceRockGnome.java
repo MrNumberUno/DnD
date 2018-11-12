@@ -2,7 +2,9 @@ package src.main.java.Races;
 
 import java.util.ArrayList;
 
-public class RaceRockGnome implements DnDRace {
+import src.main.java.DnDCharacter;
+
+public class RaceRockGnome implements DnDCharacter.DnDRace {
 
 	@Override
 	public ArrayList<String> RaceFeatures() {
@@ -20,47 +22,42 @@ public class RaceRockGnome implements DnDRace {
 	}
 
 	@Override
-	public int getSpeed() {
-		return 25;
+	public void setSpeed() {
+		DnDCharacter.setSpeed(25);
 	}
 
 	@Override
-	public String getSize() {
-		return "Small";
+	public void setMaximumHP() {
 	}
 
 	@Override
-	public int getMaximumHPBonus() {
-		return 0;
+	public void addStrengthBonus() {
 	}
 
 	@Override
-	public int getStrengthBonus() {
-		return 0;
+	public void addDexterityBonus() {
 	}
 
 	@Override
-	public int getDexterityBonus() {
-		return 0;
+	public void addConstitutionBonus() {
+		DnDCharacter.setConstitution(DnDCharacter.getConstitution() + 1);
 	}
 
 	@Override
-	public int getConstitutionBonus() {
-		return 1;
+	public void addIntelligenceBonus() {
+		DnDCharacter.setIntelligence(DnDCharacter.getIntelligence() + 2);
 	}
 
 	@Override
-	public int getIntelligenceBonus() {
-		return 2;
+	public void addWisdomBonus() {
 	}
 
 	@Override
-	public int getWisdomBonus() {
-		return 0;
+	public void addCharismaBonus() {
 	}
 
 	@Override
-	public int getCharismaBonus() {
-		return 0;
+	public void setSize() {
+		DnDCharacter.setSize("Small");
 	}
 }

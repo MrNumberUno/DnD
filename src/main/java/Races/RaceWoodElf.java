@@ -2,7 +2,9 @@ package src.main.java.Races;
 
 import java.util.ArrayList;
 
-public class RaceWoodElf implements DnDRace {
+import src.main.java.DnDCharacter;
+
+public class RaceWoodElf implements DnDCharacter.DnDRace {
 
 	@Override
 	public ArrayList<String> RaceFeatures() {
@@ -23,48 +25,43 @@ public class RaceWoodElf implements DnDRace {
 	}
 
 	@Override
-	public int getSpeed() {
-		return 35;
+	public void setSpeed() {
+		DnDCharacter.setSpeed(30);
 	}
 
 	@Override
-	public String getSize() {
-		return "Medium";
+	public void setMaximumHP() {
 	}
 
 	@Override
-	public int getMaximumHPBonus() {
-		return 0;
+	public void addStrengthBonus() {
 	}
 
 	@Override
-	public int getStrengthBonus() {
-		return 0;
+	public void addDexterityBonus() {
+		DnDCharacter.setDexterity(DnDCharacter.getDexterity() + 2);
 	}
 
 	@Override
-	public int getDexterityBonus() {
-		return 2;
+	public void addConstitutionBonus() {
 	}
 
 	@Override
-	public int getConstitutionBonus() {
-		return 0;
+	public void addIntelligenceBonus() {
 	}
 
 	@Override
-	public int getIntelligenceBonus() {
-		return 0;
+	public void addWisdomBonus() {
+		DnDCharacter.setWisdom(DnDCharacter.getWisdom() + 1);
 	}
 
 	@Override
-	public int getWisdomBonus() {
-		return 1;
+	public void addCharismaBonus() {
 	}
 
 	@Override
-	public int getCharismaBonus() {
-		return 0;
+	public void setSize() {
+		DnDCharacter.setSize("Medium");
 	}
 
 }

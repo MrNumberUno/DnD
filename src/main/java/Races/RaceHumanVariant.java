@@ -2,7 +2,9 @@ package src.main.java.Races;
 
 import java.util.ArrayList;
 
-public class RaceHumanVariant implements DnDRace {
+import src.main.java.DnDCharacter;
+
+public class RaceHumanVariant implements DnDCharacter.DnDRace {
 
 	@Override
 	public ArrayList<String> RaceFeatures() {
@@ -17,48 +19,40 @@ public class RaceHumanVariant implements DnDRace {
 	}
 
 	@Override
-	public int getSpeed() {
-		return 30;
+	public void setSpeed() {
+		DnDCharacter.setSpeed(30);
 	}
 
 	@Override
-	public String getSize() {
-		return "Meduim";
+	public void setMaximumHP() {
 	}
 
 	@Override
-	public int getMaximumHPBonus() {
-		return 0;
+	public void addStrengthBonus() {
 	}
 
 	@Override
-	public int getStrengthBonus() {
-		return 0;
+	public void addDexterityBonus() {
 	}
 
 	@Override
-	public int getDexterityBonus() {
-		return 0;
+	public void addConstitutionBonus() {
 	}
 
 	@Override
-	public int getConstitutionBonus() {
-		return 0;
+	public void addIntelligenceBonus() {
 	}
 
 	@Override
-	public int getIntelligenceBonus() {
-		return 0;
+	public void addWisdomBonus() {
 	}
 
 	@Override
-	public int getWisdomBonus() {
-		return 0;
+	public void addCharismaBonus() {
 	}
 
 	@Override
-	public int getCharismaBonus() {
-		return 0;
+	public void setSize() {
+		DnDCharacter.setSize("Medium");
 	}
-
 }
