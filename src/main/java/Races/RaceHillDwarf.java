@@ -29,7 +29,7 @@ public class RaceHillDwarf implements DnDCharacter.DnDRace {
 
 	@Override
 	public void setMaximumHP() {
-		DnDCharacter.setMaxHP(DnDCharacter.getMaxHP()+1);
+		DnDCharacter.setMaximumHP(DnDCharacter.getMaxHP()+1);
 	}
 
 	@Override

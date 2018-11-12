@@ -9,12 +9,14 @@ import java.util.ArrayList;
 public class DnDCharacter {
 	
 	private DnDRace race2;
+	
+	private DnDClass playerClass2;
     
     //basic info
     private String race, playerClass, characterName, playerName, background, alignment;
     
     //proficiency bonus
-    private final int profBonus;
+    private static int profBonus;
 
     //amount of skill proficiencies
     private int profAmount;
@@ -152,34 +154,34 @@ public class DnDCharacter {
         this.ac = 0;
         
         //proficiency bonus
-        this.profBonus = 2;
+        DnDCharacter.profBonus = 2;
         //amount of skill proficiencies
         this.profAmount = 0;
         
         this.doubleSkillProfs = new int[18];
         
         //racial size (small, medium)
-        this.size = "";
+        DnDCharacter.size = "";
         
         //1st level spell slots
         this.firstSlots = 0;
         
         //primary stats
-        this.strength = 0;
-        this.dexterity = 0;
-        this.intelligence = 0;
-        this.constitution = 0;
-        this.wisdom = 0;
-        this.charisma = 0;
+        DnDCharacter.strength = 0;
+        DnDCharacter.dexterity = 0;
+        DnDCharacter.intelligence = 0;
+        DnDCharacter.constitution = 0;
+        DnDCharacter.wisdom = 0;
+        DnDCharacter.charisma = 0;
     
         //stat rolls
         this.statRolls = new int[6];
                 
         //saving throws
-        this.strengthST = 0;
+        this.setStrengthST(0);
         this.dexterityST = 0;
         this.intelligenceST = 0;
-        this.constitutionST = 0;
+        this.setConstitutionST(0);
         this.wisdomST = 0;
         this.charismaST = 0;
         
@@ -206,10 +208,10 @@ public class DnDCharacter {
         this.initiative = 0;
     
         //speed (in feet per turn)
-        this.speed = 0;
+        DnDCharacter.speed = 0;
     
         //HP
-        this.maximumHP = 0;
+        DnDCharacter.setMaximumHP(0);
         
         //weapon attacks
         this.weaponAttacks = new ArrayList<>();
@@ -266,9 +268,9 @@ public class DnDCharacter {
     public int[] getSavingThrows()
     {
         int[] sts = new int[6];
-        sts[0] = this.strengthST;
+        sts[0] = this.getStrengthST();
         sts[1] = this.dexterityST;
-        sts[2] = this.constitutionST;
+        sts[2] = this.getConstitutionST();
         sts[3] = this.intelligenceST;
         sts[4] = this.wisdomST;
         sts[5] = this.charismaST;
@@ -416,33 +418,33 @@ public class DnDCharacter {
     {
         chaMod = value;
     }
-    public int getStrMod()
+    public static int getStrMod()
     {
-        return this.strMod;
+        return strMod;
     }
     public int getDexMod()
     {
-        return this.dexMod;
+        return DnDCharacter.dexMod;
     }
-    public int getConMod()
+    public static int getConMod()
     {
-        return this.conMod;
+        return DnDCharacter.conMod;
     }
     public int getIntMod()
     {
-        return this.intMod;
+        return DnDCharacter.intMod;
     }
     public int getWisMod()
     {
-        return this.wisMod;
+        return DnDCharacter.wisMod;
     }
     public int getChaMod()
     {
-        return this.chaMod;
+        return DnDCharacter.chaMod;
     }
-    public int getProfBonus()
+    public static int getProfBonus()
     {
-        return this.profBonus;
+        return profBonus;
     }
     public String getClericDomain()
     {
@@ -613,11 +615,11 @@ public class DnDCharacter {
     }
     public static int getMaxHP()
     {
-        return maximumHP;
+        return getMaximumHP();
     }
-    public static void setMaxHP(int h)
+    public static void setMaximumHP(int h)
     {
-    	maximumHP = h;
+    	setMaximumHP(h);
     }
     public int getArmorClass()
     {
@@ -668,9 +670,9 @@ public class DnDCharacter {
     public void computeRest()
     {
         //compute saving throw stats and hp
-        this.strengthST = strMod;
+        this.setStrengthST(strMod);
         this.dexterityST = dexMod;
-        this.constitutionST = conMod;
+        this.setConstitutionST(conMod);
         this.intelligenceST = intMod;
         this.charismaST = chaMod;
         this.wisdomST = wisMod;
@@ -780,9 +782,9 @@ public class DnDCharacter {
     //used in compute(), carry out Barbarian class changes
     private void barbarianChanges()
     {
-        strengthST = strMod + profBonus;
-        constitutionST = conMod + profBonus;
-        maximumHP = 12 + conMod;
+        setStrengthST(strMod + profBonus);
+        setConstitutionST(conMod + profBonus);
+        setMaximumHP(12 + conMod);
         proficiencies.add("Light Armor");
         proficiencies.add("Medium Armor");
         proficiencies.add("Shields");
@@ -799,7 +801,7 @@ public class DnDCharacter {
     {
         dexterityST = dexMod + profBonus;
         charismaST = chaMod + profBonus;
-        maximumHP = 8 + conMod;
+        setMaximumHP(8 + conMod);
         proficiencies.add("Light Armor");
         proficiencies.add("Simple Weapons");
         proficiencies.add("Hand Crossbows");
@@ -821,7 +823,7 @@ public class DnDCharacter {
     {
         wisdomST = wisMod + profBonus;
         charismaST = chaMod + profBonus;
-        maximumHP = 8 + conMod;
+        setMaximumHP(8 + conMod);
         proficiencies.add("Light Armor");
         proficiencies.add("Medium Armor");
         proficiencies.add("Shields");
@@ -882,7 +884,7 @@ public class DnDCharacter {
     {
         intelligenceST = intMod + profBonus;
         wisdomST = wisMod + profBonus;
-        maximumHP = 8 + conMod;
+        setMaximumHP(8 + conMod);
         firstSlots = 2;
         proficiencies.add("Light Armor");
         proficiencies.add("Medium Armor");
@@ -909,9 +911,9 @@ public class DnDCharacter {
     //used in compute(), carry out Fighter class changes
     private void fighterChanges()
     {
-        strengthST = strMod + profBonus;
-        constitutionST = conMod + profBonus;
-        maximumHP = 10 + conMod;
+        setStrengthST(strMod + profBonus);
+        setConstitutionST(conMod + profBonus);
+        setMaximumHP(10 + conMod);
         proficiencies.add("All Armor");
         proficiencies.add("Shields");
         proficiencies.add("Simple Weapons");
@@ -925,8 +927,8 @@ public class DnDCharacter {
     private void monkChanges()
     {
         dexterityST = dexMod + profBonus;
-        strengthST = strMod + profBonus;
-        maximumHP = 8 + conMod;
+        setStrengthST(strMod + profBonus);
+        setMaximumHP(8 + conMod);
         proficiencies.add("Simple Weapons");
         proficiencies.add("Shortswords");
         proficiencies.add("Choose 1 type of Artisan's Tools or One Musical Instrument");
@@ -941,7 +943,7 @@ public class DnDCharacter {
     {
         wisdomST = wisMod + profBonus;
         charismaST = chaMod + profBonus;
-        maximumHP = 10 + conMod;
+        setMaximumHP(10 + conMod);
         proficiencies.add("All armor");
         proficiencies.add("Shields");
         proficiencies.add("Simple Weapons");
@@ -955,9 +957,9 @@ public class DnDCharacter {
     //used compute(), carry out Ranger class changes
     private void rangerChanges()
     {
-        strengthST = strMod + profBonus;
+        setStrengthST(strMod + profBonus);
         dexterityST = dexMod + profBonus;
-        maximumHP = 10 + conMod;
+        setMaximumHP(10 + conMod);
         proficiencies.add("Light Armor");
         proficiencies.add("Medium Armor");
         proficiencies.add("Shields");
@@ -973,7 +975,7 @@ public class DnDCharacter {
     {
         dexterityST = dexMod + profBonus;
         intelligenceST = intMod + profBonus;
-        maximumHP = 8 + conMod;
+        setMaximumHP(8 + conMod);
         proficiencies.add("Light Armor");
         proficiencies.add("Simple Weapons");
         proficiencies.add("Hand Crossbows");
@@ -989,9 +991,9 @@ public class DnDCharacter {
     //used in compute(), carry out Sorcerer class changes
     private void sorcererChanges()
     {
-        constitutionST = conMod + profBonus;
+        setConstitutionST(conMod + profBonus);
         charismaST = chaMod + profBonus;
-        maximumHP = 6 + conMod;
+        setMaximumHP(6 + conMod);
         firstSlots = 2;
         proficiencies.add("Daggers");
         proficiencies.add("Darts");
@@ -1007,7 +1009,7 @@ public class DnDCharacter {
         {
             classFeatures.add("Draconic Resilience");
             classFeatures.add("Dragon Ancestor");
-            maximumHP = maximumHP + 1;
+            setMaximumHP(getMaximumHP() + 1);
         }
         else
         {
@@ -1021,7 +1023,7 @@ public class DnDCharacter {
     {
         wisdomST = wisMod + profBonus;
         charismaST = chaMod + profBonus; 
-        maximumHP = 8 + conMod;
+        setMaximumHP(8 + conMod);
         firstSlots = 1;
         proficiencies.add("Light Armor");
         proficiencies.add("Simple Weapons");
@@ -1047,7 +1049,7 @@ public class DnDCharacter {
     {
         intelligenceST = intMod + profBonus;
         wisdomST = wisMod + profBonus;
-        maximumHP = 6 + conMod;
+        setMaximumHP(6 + conMod);
         proficiencies.add("Daggers");
         proficiencies.add("Darts");
         proficiencies.add("Slings");
@@ -1110,7 +1112,7 @@ public class DnDCharacter {
         raceFeatures.add("Stonecutting");
         if(race.equals("Hill Dwarf"))
         {
-            maximumHP += 1;
+            setMaximumHP(getMaximumHP() + 1);
             raceFeatures.add("Dwarven Toughness");
             wisdom++;
         }
@@ -1297,8 +1299,8 @@ public class DnDCharacter {
     	race2.addWisdomBonus();
     	race2.addCharismaBonus();
     }
-    
-    public interface DnDRace {
+
+	public interface DnDRace {
     	public ArrayList<String> RaceFeatures();
     	
     	public String getRace();
@@ -1320,10 +1322,44 @@ public class DnDCharacter {
     	public void addCharismaBonus();
     	
     	public void setSize();
-
-    	
     }
- 
+	public void class2Changes(){
+		classFeatures.addAll(playerClass2.classFeatures());
+		proficiencies.addAll(playerClass2.proficiencies());
+		playerClass2.classChanges();
+	}
+    
+    public interface DnDClass {
+    	public ArrayList<String> classFeatures();
+    	
+    	public ArrayList<String> proficiencies();
+    	
+    	public String getDnDClass();
+    	
+    	public void classChanges();
+    }
+    
+    public int getStrengthST() {
+		return strengthST;
+	}
+
+
+	public static void setStrengthST(int strengthST) {
+		strengthST = strengthST;
+	}
+
+	public int getConstitutionST() {
+		return constitutionST;
+	}
+
+
+	public static void setConstitutionST(int constitutionST) {
+		constitutionST = constitutionST;
+	}
+
+	public static int getMaximumHP() {
+		return maximumHP;
+	}
 }
      
 
