@@ -23,9 +23,29 @@ public class WeaponAttackTest {
 	}
 	
 	@Test
-	public void givenDagger_whenMod3andProf2_thenIsProperties() {
+	public void givenDagger_whenMod3andProf2_thenProperties() {
 		WeaponAttack sut = new WeaponAttack("Dagger", 3, 2);
 		String expexted = "     Properties : Finesse Light Thrown (range 20/60) ";
 		assert(sut.propertyString().equals(expexted));
+	}
+	
+	@Test
+	public void givenHandaxe_whenSetMod3andProf2_thenAttackBonus() {
+		WeaponAttack sut = new WeaponAttack("Handaxe", 0, 0);
+		sut.setAttack(3, 2);
+		assert(sut.getAttackBonus() == 5);
+	}
+	
+	@Test
+	public void givenGreatclub_whenSetMod3_thenDamage() {
+		WeaponAttack sut = new WeaponAttack("Greatclub", 0, 0);
+		sut.setDamage(3);
+		assert(sut.getDamage().equals("1d8 + 03"));
+	}
+	
+	@Test
+	public void givenJavalin_whenSetMod3Prof2_thenDamage() {
+		WeaponAttack sut = new WeaponAttack("Javalin", 3, 2);
+		assert(sut.attackString().equals("     Attack Bonus : +5"));
 	}
 }
