@@ -98,3 +98,13 @@
 /RaceRockGnome.class
 /RaceHumanVariant.class
 /RaceDragonBorn.class
+/.gitignore
+/DnDCharacterTest.class
+/README.md
+/Races/
+/DnDCharacter$DnDClass.class
+/DnDClasses/
+/ClassBard.class
+/ClassBarbarian.class
+/DnDCharacter$Bard.class
+/WeaponAttackTest.class

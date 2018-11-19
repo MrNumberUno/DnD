@@ -293,4 +293,12 @@ class WeaponAttack
         return attack;
     }
     
+    public int getAttackBonus() {
+		return attackBonus;
+	}
+    
+    public String getDamage() {
+		return damage;
+	}
+    
 }
