@@ -1,3 +1,5 @@
+//Abstract Equipment Class.
+//Not yet used
 package Equipment;
 
 import java.util.ArrayList;

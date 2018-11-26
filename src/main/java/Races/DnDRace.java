@@ -1,3 +1,5 @@
+//Race interface
+//Not yet used
 package Races;
 
 import java.util.ArrayList;
